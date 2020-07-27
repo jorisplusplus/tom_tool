@@ -25,7 +25,20 @@ result = input("Reflash? [Y/n]")
 for item in serial.tools.list_ports.comports():
     if item.manufacturer == "HackZone" and (result == "" or result == "Y" or result == "Yes" or result == "yes"):    
         r = requests.get(url, allow_redirects=True)
-        open('firmware.bin', 'wb').write(r.content)
-        esptool.main(["-b", "115200", "-p", item.device, "erase_flash"])
-        esptool.main(["--baud", "2000000", "--port", item.device, "--before", "default_reset", "--after", "hard_reset", "write_flash", "-z", "--flash_mode", "dio", "--flash_freq", "80m", "--flash_size", "detect", "0xd000", "ota_data_initial.bin", "0x1000", "bootloader.bin", "0x10000", "firmware.bin", "0x8000", "debug_4MB.bin"])
-
+        if r.ok:
+            open('firmware.bin', 'wb').write(r.content)
+            esptool.main(["-b", "115200", "-p", item.device, "erase_flash"])
+            esptool.main(["--baud", "2000000", "--port", item.device, "--before", "default_reset", "--after", "hard_reset", "write_flash", "-z", "--flash_mode", "dio", "--flash_freq", "80m", "--flash_size", "detect", "0x1e1000", "initial_fs.zip", "0xd000", "ota_data_initial.bin", "0x1000", "bootloader.bin", "0x10000", "firmware.bin", "0x8000", "campzone2020_16MB.bin"])
+            print("""
+Flash succes!
+Further instructions:
+Initially 3 buttons light up, wait untill the whole display is dimly lit.
+Press diagonal from top left to bottom right afterwhich the buttons will turn green.
+Press the home button to reboot into you brand new badge!           
+""")            
+            input("Press enter to exit")
+            exit()
+        else:
+            input("Download failed ;(, press enter to exit")
+            exit()
+input("Badge not detected :(, press enter to exit")
