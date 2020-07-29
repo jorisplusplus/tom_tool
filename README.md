@@ -9,6 +9,6 @@ Last-resort recovery for the campzone 2020 badge. Use this when your badge won't
 Run `pip3 install esptool pyserial requests; python3 tom_tool.py`.
 
 ## Windows
-Download the latest release zip of this repository (e.g. https://github.com/jorisplusplus/tom_tool/releases/tag/beta1), unpack it completely, and run tom_tool.exe.
+Download the latest release zip of this repository (e.g. https://github.com/jorisplusplus/tom_tool/releases/latest), unpack it completely, and run tom_tool.exe.
 
 
