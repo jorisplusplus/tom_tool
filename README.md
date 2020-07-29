@@ -11,4 +11,4 @@ Run `pip3 install esptool pyserial requests; python3 tom_tool.py`.
 ## Windows
 Download the latest release zip of this repository (e.g. https://github.com/jorisplusplus/tom_tool/releases/latest), unpack it completely, and run tom_tool.exe.
 
-
+If windows smartscreen pops up click on more info and then run anyway
