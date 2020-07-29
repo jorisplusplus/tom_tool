@@ -1,6 +1,7 @@
 import esptool
 import requests
 import serial
+import sys
 
 url = 'https://ota.cz20.hackz.one/campzone2020.bin'
 
@@ -32,13 +33,13 @@ for item in serial.tools.list_ports.comports():
             print("""
 Flash succes!
 Further instructions:
-Initially 3 buttons light up, wait untill the whole display is dimly lit.
+Initially 3 buttons light up, wait until the whole display is dimly lit.
 Press diagonal from top left to bottom right afterwhich the buttons will turn green.
 Press the home button to reboot into you brand new badge!           
 """)            
             input("Press enter to exit")
-            exit()
+            sys.exit()
         else:
             input("Download failed ;(, press enter to exit")
-            exit()
+            sys.exit()
 input("Badge not detected :(, press enter to exit")
